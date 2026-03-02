@@ -24,6 +24,40 @@ const ISOLATIE_BREEDTE = 600; // mm — vast
 const WAND_TYPES = {
 
   // ── Bestaande types ───────────────────────────────────────────────────────
+  MS75_1_50_1: {
+    label: 'MS75 1.50.1', dikte: 75,
+    gips_links: 1, profiel_breedte: 50, gips_rechts: 1,
+    isolatie: false, isolatie_lagen: 0, max_isolatie_dikte: null,
+    schroeven: [
+      { laag: 1, lengte: 25, afstand_lengte: 250, afstand_breedte: 590 },
+    ],
+  },
+  MS100_2_50_2: {
+    label: 'MS100 2.50.2', dikte: 100,
+    gips_links: 2, profiel_breedte: 50, gips_rechts: 2,
+    isolatie: 'A', isolatie_lagen: 0, max_isolatie_dikte: null,
+    schroeven: [
+      { laag: 1, lengte: 25, afstand_lengte: 750, afstand_breedte: 590 },
+      { laag: 2, lengte: 35, afstand_lengte: 250, afstand_breedte: 590 },
+    ],
+  },
+  MS100_2_50_2A: {
+    label: 'MS100 2.50.2A', dikte: 100,
+    gips_links: 2, profiel_breedte: 50, gips_rechts: 2,
+    isolatie: 'A', isolatie_lagen: 1, max_isolatie_dikte: 50,
+    schroeven: [
+      { laag: 1, lengte: 25, afstand_lengte: 750, afstand_breedte: 590 },
+      { laag: 2, lengte: 35, afstand_lengte: 250, afstand_breedte: 590 },
+    ],
+  },
+  MS100_1_75_1: {
+    label: 'MS100 1.75.1', dikte: 100,
+    gips_links: 1, profiel_breedte: 75, gips_rechts: 1,
+    isolatie: false, isolatie_lagen: 0, max_isolatie_dikte: null,
+    schroeven: [
+      { laag: 1, lengte: 25, afstand_lengte: 250, afstand_breedte: 590 },
+    ],
+  },  
   MS100_1_75_1A: {
     label: 'MS100 1.75.1A', dikte: 100,
     gips_links: 1, profiel_breedte: 75, gips_rechts: 1,
@@ -32,10 +66,10 @@ const WAND_TYPES = {
       { laag: 1, lengte: 25, afstand_lengte: 250, afstand_breedte: 590 },
     ],
   },
-  MS100_2_50_2A: {
-    label: 'MS100 2.50.2A', dikte: 100,
-    gips_links: 2, profiel_breedte: 50, gips_rechts: 2,
-    isolatie: 'A', isolatie_lagen: 1, max_isolatie_dikte: 50,
+  MS125_2_75_2: {
+    label: 'MS125 2.75.2', dikte: 125,
+    gips_links: 2, profiel_breedte: 75, gips_rechts: 2,
+    isolatie: false, isolatie_lagen: 0, max_isolatie_dikte: null,
     schroeven: [
       { laag: 1, lengte: 25, afstand_lengte: 750, afstand_breedte: 590 },
       { laag: 2, lengte: 35, afstand_lengte: 250, afstand_breedte: 590 },
@@ -59,32 +93,8 @@ const WAND_TYPES = {
     ],
   },
 
-  // ── Nieuwe types ──────────────────────────────────────────────────────────
-  MS100_1_75_1: {
-    label: 'MS100 1.75.1', dikte: 100,
-    gips_links: 1, profiel_breedte: 75, gips_rechts: 1,
-    isolatie: false, isolatie_lagen: 0, max_isolatie_dikte: null,
-    schroeven: [
-      { laag: 1, lengte: 25, afstand_lengte: 250, afstand_breedte: 590 },
-    ],
-  },
-  MS75_1_50_1: {
-    label: 'MS75 1.50.1', dikte: 75,
-    gips_links: 1, profiel_breedte: 50, gips_rechts: 1,
-    isolatie: false, isolatie_lagen: 0, max_isolatie_dikte: null,
-    schroeven: [
-      { laag: 1, lengte: 25, afstand_lengte: 250, afstand_breedte: 590 },
-    ],
-  },
-  MS125_2_75_2: {
-    label: 'MS125 2.75.2', dikte: 125,
-    gips_links: 2, profiel_breedte: 75, gips_rechts: 2,
-    isolatie: false, isolatie_lagen: 0, max_isolatie_dikte: null,
-    schroeven: [
-      { laag: 1, lengte: 25, afstand_lengte: 750, afstand_breedte: 590 },
-      { laag: 2, lengte: 35, afstand_lengte: 250, afstand_breedte: 590 },
-    ],
-  },
+  // ── Dubbele profielen ──────────────────────────────────────────────────────────
+
   MS205_2_75_75_2A: {
     label: 'MS205 2.75-75.2A', dikte: 205,
     gips_links: 2, profiel_breedte: 75, gips_rechts: 2,
@@ -103,8 +113,27 @@ const WAND_TYPES = {
       { laag: 2, lengte: 35, afstand_lengte: 250, afstand_breedte: 590 },
     ],
   },
+  MS250_2_100_100_2A: {
+    label: 'MS250 2.100-100.2A', dikte: 250,
+    gips_links: 2, profiel_breedte: 100, gips_rechts: 2,
+    isolatie: 'A', isolatie_lagen: 1, max_isolatie_dikte: 75, dubbel_profiel: true,
+    schroeven: [
+      { laag: 1, lengte: 25, afstand_lengte: 750, afstand_breedte: 590 },
+      { laag: 2, lengte: 35, afstand_lengte: 250, afstand_breedte: 590 },
+    ],
+  },
+  MS250_2_100_100_2AA: {
+    label: 'MS250 2.100-100.2AA', dikte: 250,
+    gips_links: 2, profiel_breedte: 100, gips_rechts: 2,
+    isolatie: 'AA', isolatie_lagen: 2, max_isolatie_dikte: 75, dubbel_profiel: true,
+    schroeven: [
+      { laag: 1, lengte: 25, afstand_lengte: 750, afstand_breedte: 590 },
+      { laag: 2, lengte: 35, afstand_lengte: 250, afstand_breedte: 590 },
+    ],
+  },
 
   // ── MSV (voorzetwand) types ───────────────────────────────────────────────
+  
   MSV88_1_75: {
     label: 'MSV88 1.75', dikte: 88,
     gips_links: 1, profiel_breedte: 75, gips_rechts: 0,
